@@ -23,7 +23,7 @@ pipeline {
 
     post {
         success {
-            archiveArtifacts artifact: 'build/**'
+            archiveArtifacts artifacts: 'build/**'
         }
     }
 }
