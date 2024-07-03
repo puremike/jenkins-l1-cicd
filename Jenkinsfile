@@ -1,13 +1,29 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
+        stage('Build') {
+            agent {
+                docker {
+                    image "node:alpine3.20"
+                    reuseNode true
+                }
+            }
             steps {
+                cleanWs()
                 sh '''
-                    echo "Hello Jenkins Users!"
+                    node --version
+                    npm --version
+                    npm ci
+                    npm run build
                 '''
             }
         }
 
+    }
+
+    post {
+        success {
+            archiveArtifacts artifact: 'build/**'
+        }
     }
 }
