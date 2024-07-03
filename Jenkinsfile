@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                     node --version
                     npm --version
-                    npm install --legacy-peer-deps
+                    npm ci
                     npm run build
                 '''
             }
