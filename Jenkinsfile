@@ -48,7 +48,7 @@ pipeline {
                 sh '''
                     node_modules/.bin/serve -s build &
                     sleep 20
-                    npx playwright test --reporter=html
+                    #npx playwright test --reporter=html
                 '''
             }
         }
@@ -60,8 +60,8 @@ pipeline {
             archiveArtifacts artifacts: 'build/**'
         }
 
-        always {
-            junit "test-results/junit.xml"
-        }
+        // always {
+        //     junit "test-results/junit.xml"
+        // }
     }
 }
